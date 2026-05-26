@@ -2,7 +2,7 @@ const myarray=[];
 
 class stack{
     constructor(data){
-        data=this.data;
+        this.data=data;
     }
 
     push(data, myarray){
@@ -28,7 +28,7 @@ let stack0= new stack();
 stack0.push("Hello world", myarray);
 stack0.push("This is the second element", myarray);
 stack0.push("The stack is forming up!!!", myarray);
-stacko.push("This is the third element", myarray);
+stack0.push("This is the third element", myarray);
 stack0.push("This is the fourth element", myarray);
 
 
