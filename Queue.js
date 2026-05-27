@@ -2,7 +2,7 @@ class Queue{
 
 
     constructor(){
-      this.data= new Array(6)
+      this.data=[]
     }
 
     //adding an element to the very last element of the queue
