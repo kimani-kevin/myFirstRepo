@@ -1,48 +1,69 @@
-//creating the dataset
-const dataset=new Array(100,45,600);
-
-
-//defining the nodes
-let parent;
-let left_child;
-let right_child;
-let leaf;
-let new_node;
-let exchange_slot;
-
-
-//formattiong tha data to fit a simple node
-left_child=dataset[0];
-parent=dataset[1];
-
-if(left_child>parent){
-    exchange_slot=parent;
-    parent=left_child;
-    left_child=exchange_slot;
-}
-
-
-console.log(parent+" is the parent node "+left_child+" is the left_child");
-
-//adjustingt the node to add on a new node in the mix.
-new_node=dataset[2];
-if(new_node>left_child){
-    if(new_node>parent){
-        right_child=dataset[2];
-    }
-    else{
-        exchange_slot=left_child;
-        left_child=new_node;
-        leaf=exchange_slot;
-        
+class Node{
+    constructor(data){
+        this.data=data;
+        this.left=null;
+        this.right=null;
     }
 }
-else{
-    leaf=new_node;
+
+
+class BinarySearchTree {
+
+
+    constructor(){
+        this.root=null
+    }
+
+
+    insert(data){
+        const newNode = new Node(data);
+
+        if(!this.root){
+            this.root=newNode;
+            return;
+        }
+
+        let current= this.root;
+        while(true){
+            if(data<current.data){
+            if(!current.left){
+                current.left=newNode;
+                return;
+
+            }
+            current=current.left;
+        }
+        else {
+             if(!current.right){
+                current.right=newNode;
+                return;
+             }
+             current=current.right;  
+
+        }
+        }
+    
+
+
+
+    }
+
+    inorder(node = this.root){
+        if(node){
+            this.inorder(node.left);
+            console.log(node.data);
+            this.inorder(node.right);
+        }
+    }
 }
 
 
-console.log(leaf+" is the leaf node "+left_child+ " is the left node "+parent+" is the parent node "+right_child+" is the right node");
+const bst= new BinarySearchTree();
 
+const an_array=[100,500,700,1,3,4,56,6,7,7,8,53,6,,53,24,5,23,24,23,67];
 
-//adjusting the algorithm to sort more data into nodes
+for(let i=0; i<an_array.length;i++){
+    bst.insert(an_array[i]);
+}
+
+bst.inorder();
